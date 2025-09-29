@@ -1,0 +1,18 @@
+//Write an ARM Assembly program to toggle LEDs connected to Port 1.16–P1.23 using specific patterns.
+
+  AREA I_O, CODE, READONLY
+START
+
+  LDR R4, =0xE0028018;
+  LDR R5, =0xE0028010;
+  LDR R0, =0x00FF0000;
+  STR R0, [R4];
+
+DELAY_LOOP
+    LDR R1, =0x550000;
+    STR R1, [R5];
+    LDR R1, =0xAA0000;
+    STR R1, [R5];
+
+  NOP
+  END
